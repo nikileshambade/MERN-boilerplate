@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
+const RolesModel = require('./roles.model');
 
 const userSchema = new Schema({
     userName: { type: String, require: true },
@@ -8,6 +9,7 @@ const userSchema = new Schema({
     password: { type: String, require: true },
     createdDate: { type: Date, default: Date.now},
     updatedDate: { type: Date, default: Date.now},
+    roles: [RolesModel.schema]
 });
 
 userSchema.pre('save', async function(next) {

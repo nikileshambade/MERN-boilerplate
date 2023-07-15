@@ -8,6 +8,7 @@ const errorHandler = require("./middlewares/error");
 
 // import routes
 const userRouter = require('./routes/user.route');
+const rolesRouter = require('./routes/roles.route');
 
 mongoose
     .connect(process.env.MONGO_URI, {
@@ -17,7 +18,7 @@ mongoose
     .then(() => console.log('DB connected'))
     .catch((error) => console.log(error));
 
-// middlewares
+// Middlewares
 app.use(morgan('dev'));
 app.use(cors({
     origin: true,
@@ -25,7 +26,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Routers
 app.use('/user', userRouter);
+app.use('/roles', rolesRouter);
 
 app.use(errorHandler);
 
