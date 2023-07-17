@@ -4,12 +4,13 @@ const { Schema, model } = mongoose;
 const RolesModel = require('./roles.model');
 
 const userSchema = new Schema({
-    userName: { type: String, require: true },
-    emailId: { type: String },
+    firstName: { type: String, require: true },
+    lastName: { type: String },
+    emailId: { type: String, require: true },
     password: { type: String, require: true },
     createdDate: { type: Date, default: Date.now},
     updatedDate: { type: Date, default: Date.now},
-    roles: [RolesModel.schema]
+    roles: [{ type: Schema.Types.ObjectId, ref: 'Roles'}]
 });
 
 userSchema.pre('save', async function(next) {

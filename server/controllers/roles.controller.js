@@ -5,16 +5,15 @@ const addRolesAndPermissions = async (req, res, next) => {
     try {
         const existingRole = await RolesModel.findOne({ role: role })
         if (existingRole) { 
-            return res.status(400).json({ message: `${role} role already exist`});
+            throw new Error(`${role} role already exist`);
         }
         const newRole = new RolesModel({
             role: role,
             permissions: permissions
         });
         await newRole.save();
-        res.send(newRole);
+        res.status(200).send(newRole);
     } catch (error) {
-        console.log(error);
         next(error);
     }
 }
