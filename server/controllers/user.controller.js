@@ -15,7 +15,7 @@ const getUser = async (req, res, next) => {
             }
             return res.status(200).send(user);
         } else {
-            const allUsers = await UserModel.find({}, 'userName emailId');
+            const allUsers = await UserModel.find({}, 'firstName lastName emailId roles').populate('roles', 'role');
             return res.status(200).send(allUsers);
         }
     } catch (err) {

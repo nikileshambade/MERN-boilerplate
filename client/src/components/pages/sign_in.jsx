@@ -10,15 +10,29 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { signIn } from '../../api/auth';
+import { Alert } from '@mui/material';
+import { useState } from 'react';
 
 const SignInPage = () => {
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         signIn(data.get('email'), data.get('password'))
-            .then(res => console.log(res))
+            .then(res => {
+                const { data } = res;
+                if (data.error) {
+                    setError(data.error);
+                } else {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    navigate('/');
+                }
+            })
             .catch(err => console.log(err));
     };
 
@@ -54,6 +68,10 @@ const SignInPage = () => {
                     </Avatar>
                     <Typography component="h1" variant="h5">Sign in</Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                        { error && 
+                            <Alert severity="error">{ error.message }</Alert>
+                        }
+                        
                         <TextField
                             margin="normal"
                             required
