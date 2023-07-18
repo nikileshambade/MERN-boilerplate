@@ -37,13 +37,13 @@ const UserPage = () => {
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
-                            {columns.map((column) => (
-                                <TableCell
-                                    key={column.id}
-                                >
-                                    {column.label}
-                                </TableCell>
-                            ))}
+                            {
+                                columns.map((column) => (
+                                    <TableCell key={column.id}>
+                                        {column.label}
+                                    </TableCell>
+                                ))
+                            }
                         </TableRow>
                     </TableHead>
                     <TableBody>

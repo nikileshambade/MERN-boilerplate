@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
@@ -7,7 +6,11 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 
-const settings = ['Profile', 'Logout'];
+const settings = [{
+    name: 'Profile',
+}, {
+    name: 'Logout',
+}];
 
 const ProfileMenu = () => {
     const [anchorElUser, setAnchorElUser] = useState(null);
@@ -46,8 +49,8 @@ const ProfileMenu = () => {
             >
                 {
                     settings.map((setting) => (
-                        <MenuItem key={setting} onClick={() => handleCloseUserMenu(setting)}>
-                            <Typography textAlign="center">{setting}</Typography>
+                        <MenuItem key={setting.name} onClick={() => handleCloseUserMenu(setting)}>
+                            <Typography textAlign="center">{setting.name}</Typography>
                         </MenuItem>
                     ))
                 }
