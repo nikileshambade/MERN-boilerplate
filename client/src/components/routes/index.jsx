@@ -5,7 +5,7 @@ import SessionManager from './session';
 import BasicLayout from '../layout/basic_layout';
 import HomePage from '../pages/home';
 import DashBoard from '../pages/dashboard';
-import UserPage from '../pages/users';
+import Settings from '../pages/settings';
 
 const AppRoutes = () => {
     return(
@@ -16,7 +16,7 @@ const AppRoutes = () => {
                 <Route path='/' element={<BasicLayout />} >
                     <Route path='/' element={<HomePage />} ></Route>
                     <Route path='/dashboard' element={<DashBoard />} ></Route>
-                    <Route path='/users' element={<UserPage />} ></Route>
+                    <Route path='/settings' element={<Settings />} ></Route>
                 </Route>
             </Route>
         </Routes>

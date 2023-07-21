@@ -4,10 +4,6 @@ import { NavLink } from "react-router-dom";
 const pages = [{
     name: 'Dashboard',
     to: '/dashboard'
-},
-{
-    name: 'Manage users',
-    to: '/users'
 }];
 
 const HeaderMenu = () => {

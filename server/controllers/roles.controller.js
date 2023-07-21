@@ -18,6 +18,16 @@ const addRolesAndPermissions = async (req, res, next) => {
     }
 }
 
+const getAllRoles = async (req, res, next) => {
+    try {
+        const allRoles = await RolesModel.find({});
+        res.status(200).send(allRoles);
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
-    addRolesAndPermissions
+    addRolesAndPermissions,
+    getAllRoles
 }

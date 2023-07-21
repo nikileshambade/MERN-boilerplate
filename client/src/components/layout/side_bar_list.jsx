@@ -7,6 +7,7 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
 import PersonIcon from '@mui/icons-material/Person';
 import CardTravelIcon from '@mui/icons-material/CardTravel';
+import { NavLink } from "react-router-dom";
 
 const list = {
     main: [{
@@ -38,10 +39,6 @@ const list = {
         name: 'Customers',
         icon: <CardTravelIcon />,
         path: '/vendor'
-    },{
-        name: 'Users',
-        icon: <PersonIcon />,
-        path: '/vendor'
     }]
 }
 
@@ -50,7 +47,7 @@ const SideBarListMenu = () => {
         <>
             <List>
                 {list.main.map((item, index) => (
-                    <ListItem key={item.name} disablePadding sx={{ display: 'block' }}>
+                    <ListItem key={item.name + '_' + index} disablePadding sx={{ display: 'block' }}>
                         <ListItemButton>
                             <ListItemIcon>
                                 {item.icon}
@@ -64,12 +61,12 @@ const SideBarListMenu = () => {
             <ListSubheader component="div" inset>Manage</ListSubheader>
             <List>
                 {list.subList.map((item, index) => (
-                    <ListItem key={item.name} disablePadding>
+                    <ListItem key={item.name + '_' + index} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
                                 {item.icon}
                             </ListItemIcon>
-                            <ListItemText primary={item.name} />
+                            <ListItemText component={NavLink} to={item.path} primary={item.name} />
                         </ListItemButton>
                     </ListItem>
                 ))}

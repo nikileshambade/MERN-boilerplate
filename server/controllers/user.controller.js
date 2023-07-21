@@ -42,6 +42,7 @@ const registerUser = async (req, res, next) => {
             firstName: firstName,
             lastName: lastName,
             emailId: email,
+            password: password,
             roles: userRole && userRole._id
         });
         await newUser.save();
