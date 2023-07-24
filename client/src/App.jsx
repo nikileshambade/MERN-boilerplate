@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AppRoutes from './components/routes';
-import { ColorModeContext, useMode} from './theme'
+import { ColorModeContext, useMode} from './api/theme'
 
 const queryClient = new QueryClient();
 // const darkTheme = createTheme({

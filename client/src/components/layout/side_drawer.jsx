@@ -18,7 +18,7 @@ import { Outlet } from 'react-router';
 import ProfileMenu from './profile_menu';
 import HeaderMenu from './header_menu';
 import SideBarListMenu from './side_bar_list';
-import { ColorModeContext } from '../../theme';
+import { ColorModeContext } from '../../api/theme';
 import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;

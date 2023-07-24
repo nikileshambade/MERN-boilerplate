@@ -1,5 +1,6 @@
 import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
+import palette from "./palette";
 
 // color design
 
@@ -145,22 +146,7 @@ export const themeSettings = (mode) => {
                 // background: {
                 //     default: colors.primary[500]
                 // }
-            } : {
-                // primary: {
-                //     main: colors.primary[100]
-                // },
-                // secondary: {
-                //     main: colors.greenAccent[500]
-                // },
-                // neutral : {
-                //     dark: colors.gray[700],
-                //     main: colors.gray[500],
-                //     light: colors.gray[100]
-                // },
-                // background: {
-                //     default: '#fff'
-                // }
-            }
+            } : palette
         }
     }
 }
